@@ -1,0 +1,175 @@
+object berghain{
+	var listaDePistas=[mainRoom,panoramaBar,darkRoom]
+	method dejarEntrar (unaPersona,unDia){
+		if(unDia=="lunes"){
+			console.println("perdon, los dias lunes el club esta cerrado")
+			
+		}else if(unDia=="martes"||unDia=="viernes"){
+			patovaRochensen.dejarPasar(unaPersona)
+			
+		}else if(unDia=="miercoles"||unDia=="sabado"){
+			rodrigsen.dejarPasar(unaPersona)
+			
+		}else{
+			gushtavotruccensen.dejarPasar(unaPersona)
+		}	
+	}
+	
+	method mostrarPersonasBailando(){
+		listaDePistas.forEach({
+			pista=>console.println(pista.cantidadDePersonas())
+		})
+	}
+	
+	method estaGonzenBailando(){
+		listaDePistas.forEach({
+			pista=>if(pista.contains(gonzen)){
+				console.println("gonzen esta en la pista "+self)
+				
+			}else{
+				console.println("gonzen no esta aca")
+			}
+		})
+	}
+	
+	
+}
+
+
+object vonLukas {
+	var energia =150
+	var divercion =70
+	var remera= "blanca"
+	var edad= 17
+	
+	method mostrameTuEdad(){
+		return edad
+	}
+	
+	method colorDeTuRemera(){
+		return remera
+	}
+	
+	method bailar(unValor){
+		energia=0
+		divercion+=unValor
+	}
+	method bailar(unaEnergia,unValor){
+		energia-=unaEnergia
+		divercion+=unValor
+	}
+}
+
+object bianker{
+	var energia =140
+	var divercion =80
+	var remera= "negra"
+	var edad= 22
+	
+	method mostrameTuEdad(){
+		return edad
+	}
+	
+	method colorDeTuRemera(){
+		return remera
+	}
+	
+	method bailar(unValor){
+		energia=0
+		divercion+=unValor
+	}
+	method bailar(unaEnergia,unValor){
+		energia-=unaEnergia
+		divercion+=unValor
+	}
+}
+
+object gonzen{
+	var energia =90
+	var divercion =15
+	var remera= "negra"
+	var edad= 33
+	
+	method mostrameTuEdad(){
+		return edad
+	}
+	method colorDeTuRemera(){
+		return remera
+	}
+	
+	method bailar(unValor){
+		energia=0
+		divercion+=unValor
+	}
+	method bailar(unaEnergia,unValor){
+		energia-=unaEnergia
+		divercion+=unValor
+	}
+}
+
+object patovaRochensen{
+	method dejarPasar(persona){
+		return persona.mostrameTuEdad()>22
+		
+	}
+}
+
+object rodrigsen{
+	method dejarPasar(persona){
+		return persona.colorDeTuRemera()=="negra"
+		
+	}
+}
+
+object gushtavotruccensen{
+	method dejarPasar(persona){
+			console.println("Hoy no es tudia")
+		 
+	}
+}
+
+object mainRoom{
+	var listaDePersonas
+	
+	method mostrarPersonasBailando(){
+		return listaDePersonas.size()
+	}
+	
+	
+	method bailar(unDia){
+		listaDePersonas.forEach({persona=> persona.Bailar(40,30) })
+	}
+}
+
+object panoramaBar{
+	var listaDePersonas
+	
+	method mostrarPersonasBailando(){
+		return listaDePersonas.size()
+	}
+
+
+	method bailar(unDia){
+		if(unDia=="martes"||unDia=="viernes"){
+			listaDePersonas.forEach({persona=> persona.Bailar(60,120) })
+			
+		}else if(unDia=="miercoles"||unDia=="sabado"){
+			listaDePersonas.forEach({persona=> persona.Bailar(1000) })
+			
+		}else{
+			listaDePersonas.forEach({persona=> persona.Bailar(80,0) })
+			}
+	}
+}
+
+object darkRoom{
+	var listaDePersonas
+	
+	method mostrarPersonasBailando(){
+		return listaDePersonas.size()
+	}
+	
+	method bailar(unDia){
+		
+	}
+}
